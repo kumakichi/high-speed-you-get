@@ -1,0 +1,10 @@
+* About
+  This repository speed up [[https://github.com/soimort/you-get][you-get]](a tiny command-line utility to download media contents [videos, audios, images] from the Web), by interting code snippet to download links using [[https://github.com/kumakichi/simpleDownloader][simpleDownloader]](a download accelerator).
+
+  And you can replace *simpleDownloader* with another download accelerator, by modifying python code in [[https://github.com/kumakichi/high-speed-you-get/blob/master/template][template]]
+
+* How to use
+  #+BEGIN_SRC sh
+    ./proc.sh -h
+    Usage: ./proc.sh [init/update]. By default, do the patch work.
+  #+END_SRC

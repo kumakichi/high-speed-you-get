@@ -4,7 +4,7 @@
         for k in headers:
             dHeader=str.format("%s%s:%s;;" % (dHeader, k, headers[k]))
     up = False
-    sd_path = "/home/san/bin/sd.raw"
+    sd_path = "/home/kumakichi/bin/simpleDownloader"
     for index, item in enumerate(sys.argv):
         if (item == '-s' or item == '--socks-proxy'):
             cmd = """%s -O "%s" -x socks5://%s '%s'"""
