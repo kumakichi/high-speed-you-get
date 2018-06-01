@@ -1,0 +1,31 @@
+    #third party downloader hack begin
+    dHeader=""
+    if headers is not None:
+        for k in headers:
+            dHeader=str.format("%s%s:%s;;" % (dHeader, k, headers[k]))
+    up = False
+    sd_path = "/home/san/bin/sd.raw"
+    for index, item in enumerate(sys.argv):
+        if (item == '-s' or item == '--socks-proxy'):
+            cmd = """%s -O "%s" -x socks5://%s '%s'"""
+            realCmd = str.format(cmd % (sd_path, filepath, sys.argv[index+1], url))
+            up = True
+            break
+        elif (item == '-x' or item == '--http-proxy'):
+            cmd = """%s -O "%s" -x http://%s '%s'"""
+            realCmd = str.format(cmd % (sd_path, filepath, sys.argv[index+1], url))
+            up = True
+            break
+        else:
+            continue
+    if (False == up):
+        if dHeader != "":
+            dHeader="".join(dHeader.rsplit(";;", 1))
+            cmd = """%s -O "%s" -header '%s' '%s'"""
+            realCmd = str.format(cmd % (sd_path, filepath, dHeader, url))
+        else:
+            cmd = """%s -O "%s" '%s'"""
+            realCmd = str.format(cmd % (sd_path, filepath, url))
+
+    os.system(realCmd)
+    #third party downloader hack end
