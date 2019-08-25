@@ -1,8 +1,4 @@
     #third party downloader hack begin
-    dHeader=""
-    if headers is not None:
-        for k in headers:
-            dHeader=str.format("%s%s:%s;;" % (dHeader, k, headers[k]))
     up = False
     sd_path = "/home/kumakichi/bin/simpleDownloader"
     for index, item in enumerate(sys.argv):
@@ -19,9 +15,11 @@
         else:
             continue
     if (False == up):
-        if dHeader != "":
-            dHeader="".join(dHeader.rsplit(";;", 1))
-            cmd = """%s -O "%s" -header '%s' '%s'"""
+        if headers is not None:
+            dHeader=''
+            for k in headers:
+                dHeader=str.format("""%s -header '%s:%s'""" % (dHeader, k, headers[k]))
+            cmd = """%s -O "%s" %s '%s'"""
             realCmd = str.format(cmd % (sd_path, filepath, dHeader, url))
         else:
             cmd = """%s -O "%s" '%s'"""
